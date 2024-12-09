@@ -1,6 +1,8 @@
-﻿namespace Charlie.Product.Service
+﻿using Charlie.Product.DataAccess.Models;
+
+namespace Charlie.Product.Service
 {
-    public class ProductService
+    public class ProductService : IProductService<ProductModel>
     {
 
     }
