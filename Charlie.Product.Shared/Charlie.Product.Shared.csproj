@@ -7,7 +7,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Charlie.Product.DataAccess\Charlie.Product.DataAccess.csproj" />
+    <Folder Include="Models\" />
+    <Folder Include="DTOs\" />
   </ItemGroup>
 
 </Project>

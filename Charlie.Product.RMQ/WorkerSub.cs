@@ -1,4 +1,4 @@
-namespace Charlie.Product.RMQ.Sub
+namespace Charlie.Product.RMQ
 {
     public class Worker : BackgroundService
     {

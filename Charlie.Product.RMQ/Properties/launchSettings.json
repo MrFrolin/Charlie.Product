@@ -1,6 +1,6 @@
 {
   "profiles": {
-    "Charlie.Product.RMQ.Sub": {
+    "Charlie.Product.RMQ": {
       "commandName": "Project",
       "environmentVariables": {
         "DOTNET_ENVIRONMENT": "Development"

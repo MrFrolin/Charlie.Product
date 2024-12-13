@@ -7,9 +7,9 @@ namespace Charlie.Product.DataAccess
     {
         public ProductDbContext(DbContextOptions<ProductDbContext> options) : base(options)
         {
+
         }
 
         public DbSet<ProductModel> Products { get; set; }
-
     }
 }

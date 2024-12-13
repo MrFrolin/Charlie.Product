@@ -1,10 +1,10 @@
-﻿namespace Charlie.Product.Service;
+﻿namespace Charlie.Product.DataAccess.Interfaces;
 
-public interface IProductService <T> where T : class
+public interface IProductRepository <T> where T : class
 {
     Task<IEnumerable<T>> GetProductsAsync();
     Task<T> GetProductAsync(Guid id);
     Task<T> CreateProductAsync(T product);
-    Task<T> UpdateProductAsync(Guid id, T product);
+    Task<T> UpdateProductAsync(T product);
     Task DeleteProductAsync(Guid id);
 }
