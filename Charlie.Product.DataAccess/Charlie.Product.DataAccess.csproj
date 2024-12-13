@@ -15,8 +15,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Interfaces\" />
-    <Folder Include="Repositories\" />
+    <ProjectReference Include="..\Charlie.Product.Shared\Charlie.Product.Shared.csproj" />
   </ItemGroup>
 
 </Project>

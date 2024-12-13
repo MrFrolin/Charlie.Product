@@ -1,6 +1,6 @@
-﻿using Charlie.Product.DataAccess.Interfaces;
-using Charlie.Product.DataAccess.Models;
+﻿using Charlie.Product.Shared.Models;
 using Microsoft.EntityFrameworkCore;
+
 
 namespace Charlie.Product.DataAccess.Repositories;
 
@@ -18,9 +18,9 @@ public class ProductRepository : IProductRepository<ProductModel>
         return await _context.Products.ToListAsync();
     }
 
-    public async Task<ProductModel?> GetProductAsync(Guid id)
+    public async Task<ProductModel?> GetProductAsync(int id)
     {
-        return await _context.Products.FirstOrDefaultAsync(p => p.Id == id);
+        return await _context.Products.FindAsync(id);
     }
 
     public async Task<ProductModel> CreateProductAsync(ProductModel product)
@@ -37,7 +37,7 @@ public class ProductRepository : IProductRepository<ProductModel>
         return product;
     }
 
-    public async Task DeleteProductAsync(Guid id)
+    public async Task DeleteProductAsync(int id)
     {
         var product = await GetProductAsync(id);
         _context.Products.Remove(product);

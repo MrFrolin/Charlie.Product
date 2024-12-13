@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Charlie.Product.DataAccess.Models;
+using Charlie.Product.Shared.Models;
 
 namespace Charlie.Product.DataAccess
 {
