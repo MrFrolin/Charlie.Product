@@ -85,7 +85,7 @@ namespace Charlie.Product.RMQ
                                     Payload = productDTO
                                 };
                                 await _rabbitMqClient.PublishAsync("product.responses", response);
-                                _logger.LogInformation($"Response sent for CorrelationId: {response.CorrelationId}");
+                                _logger.LogInformation($"Response sent for CorrelationId: {response.CorrelationId} {response.Payload}");
                             }
                             else
                             {
@@ -96,7 +96,7 @@ namespace Charlie.Product.RMQ
                                     Message = "Unknown operation type"
                                 };
                                 await _rabbitMqClient.PublishAsync("product.responses", response);
-                                _logger.LogWarning($"Unknown operation type for CorrelationId: {correlationId}");
+                                _logger.LogWarning($"Unknown operation type for CorrelationId: {correlationId} {response.Payload}");
                             }
                         }
                     }
