@@ -20,7 +20,6 @@ public class ProductRepository : IProductRepository<ProductModel>
 
     public async Task<ProductModel?> GetProductAsync(int id)
     {
-        Console.WriteLine("Getting product from database...PHLILILILILILILI");
         return await _context.Products.FindAsync(id);
     }
 
