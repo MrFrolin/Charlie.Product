@@ -1,7 +1,7 @@
-using Charlie.Product.API;
 using Charlie.Product.DataAccess;
 using Charlie.Product.DataAccess.Repositories;
 using Charlie.Product.RMQ;
+using Charlie.Product.Service;
 using Charlie.Product.Shared.Mappers;
 using Charlie.Product.Shared.Models;
 using Microsoft.EntityFrameworkCore;
@@ -16,6 +16,7 @@ builder.Services.AddDbContext<ProductDbContext>(options =>
 builder.Services.AddSingleton<RabbitMqClient>();
 
 builder.Services.AddScoped<IProductRepository<ProductModel>, ProductRepository>();
+builder.Services.AddScoped<IProductService, ProductService>();
 builder.Services.AddSingleton<ProductMapper>();
 
 builder.Services.AddHostedService<Worker>();

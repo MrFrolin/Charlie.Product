@@ -1,10 +1,8 @@
 
 using System.Text.Json;
-using Charlie.Product.API;
-using Charlie.Product.DataAccess.Repositories;
+using Charlie.Product.Service;
 using Charlie.Product.Shared.DTOs;
 using Charlie.Product.Shared.Mappers;
-using Charlie.Product.Shared.Models;
 
 namespace Charlie.Product.RMQ
 {
@@ -27,6 +25,7 @@ namespace Charlie.Product.RMQ
 
             await _rabbitMqClient.SubscribeAsync("product.operations", async message =>
             {
+                
                 try
                 {
                     _logger.LogInformation($"Worker received message: {message}");
@@ -45,13 +44,13 @@ namespace Charlie.Product.RMQ
 
                         using (var scope = _serviceScopeFactory.CreateScope())
                         {
-                            var productRepository = scope.ServiceProvider.GetRequiredService<IProductRepository<ProductModel>>();  // Resolve repository
+                            var productService = scope.ServiceProvider.GetRequiredService<IProductService>();  // Resolve repository
                             var productMapper = scope.ServiceProvider.GetRequiredService<ProductMapper>();  // Resolve mapper
 
                             if (operationType == "Create")
                             {
                                 var productModel = productMapper.ToProductModel(product);
-                                await productRepository.CreateProductAsync(productModel);
+                                await productService.CreateProductAsync(productModel);
 
                                 var response = new ProductResponseDTO
                                 {
@@ -64,7 +63,7 @@ namespace Charlie.Product.RMQ
                             }
                             else if (operationType == "Read")
                             {
-                                var existingProduct = await productRepository.GetProductAsync(product.Id);
+                                var existingProduct = await productService.GetProductAsync(product.Id);
 
                                 ProductDTO productDTO = null;
                                 string status = "Failed";

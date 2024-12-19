@@ -4,7 +4,7 @@ using System.Text;
 using System.Text.Json;
 
 
-namespace Charlie.Product.API
+namespace Charlie.Product.RMQ
 {
     public class RabbitMqClient
     {
