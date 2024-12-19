@@ -23,11 +23,10 @@ public class ProductRepository : IProductRepository<ProductModel>
         return await _context.Products.FindAsync(id);
     }
 
-    public async Task<ProductModel> CreateProductAsync(ProductModel product)
+    public async Task CreateProductAsync(ProductModel product)
     {
         await _context.Products.AddAsync(product);
         await _context.SaveChangesAsync();
-        return product;
     }
 
     public async Task<ProductModel> UpdateProductAsync(ProductModel product)

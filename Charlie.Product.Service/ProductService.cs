@@ -16,27 +16,27 @@ public class ProductService : IProductService
         return await _productRepository.GetProductsAsync();
     }
 
-    public Task<ProductModel> GetProductAsync(int id)
+    public async Task<ProductModel> GetProductAsync(int id)
     {
         _logger.LogInformation($"Getting product by id: {id}");
-        return _productRepository.GetProductAsync(id);
+        return await _productRepository.GetProductAsync(id);
     }
 
-    public Task<ProductModel> CreateProductAsync(ProductModel product)
+    public async Task CreateProductAsync(ProductModel product)
     {
         _logger.LogInformation("Creating product");
-        return _productRepository.CreateProductAsync(product);
+        await _productRepository.CreateProductAsync(product);
     }
 
-    public Task<ProductModel> UpdateProductAsync(ProductModel product)
+    public async Task<ProductModel> UpdateProductAsync(ProductModel product)
     {
         _logger.LogInformation($"Updating product by id: {product.Id}");
-        return _productRepository.UpdateProductAsync(product);
+        return await _productRepository.UpdateProductAsync(product);
     }
 
-    public Task DeleteProductAsync(int id)
+    public async Task DeleteProductAsync(int id)
     {
         _logger.LogInformation($"Deleting product by id: {id}");
-        return _productRepository.DeleteProductAsync(id);
+        await _productRepository.DeleteProductAsync(id);
     }
 }
