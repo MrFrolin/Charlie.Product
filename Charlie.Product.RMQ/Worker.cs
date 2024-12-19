@@ -44,8 +44,8 @@ namespace Charlie.Product.RMQ
 
                         using (var scope = _serviceScopeFactory.CreateScope())
                         {
-                            var productService = scope.ServiceProvider.GetRequiredService<IProductService>();  // Resolve repository
-                            var productMapper = scope.ServiceProvider.GetRequiredService<ProductMapper>();  // Resolve mapper
+                            var productService = scope.ServiceProvider.GetRequiredService<IProductService>();
+                            var productMapper = scope.ServiceProvider.GetRequiredService<ProductMapper>();
 
                             if (operationType == "Create")
                             {
